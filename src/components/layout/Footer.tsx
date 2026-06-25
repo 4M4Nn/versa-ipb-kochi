@@ -1,42 +1,32 @@
-import { siteConfig } from "@/lib/data"
+"use client"
+import { siteConfig, courses } from "@/lib/data"
 export default function Footer() {
   return (
-    <footer className="bg-[#060E1A] border-t border-[#C9A84C]/20 py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer className="bg-[#001A5C] pt-16 pb-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#F5D78E] flex items-center justify-center">
-                <span className="text-[#0A1628] font-bold text-sm">IPB</span>
-              </div>
-              <div>
-                <p className="text-white font-bold">IPB Kochi</p>
-                <p className="text-[#C9A84C] text-xs">Institute of Professional Banking</p>
-              </div>
-            </div>
-            <p className="text-[#94A3B8] text-sm">ISO 9001:2015 Certified &middot; NSDC Approved Training Partner</p>
+            <p className="font-poppins font-bold text-xl text-white mb-3">IPB <span className="text-[#FF6B00]">KOCHI</span></p>
+            <p className="text-white/50 text-sm font-inter leading-relaxed">Kerala&apos;s most trusted banking training institute. Part of Versa Growth Ventures.</p>
           </div>
           <div>
-            <h4 className="text-[#C9A84C] font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
-            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm">
-              <a href="#courses" className="hover:text-white transition-colors">Courses</a>
-              <a href="#recruiters" className="hover:text-white transition-colors">Recruiters</a>
-              <a href="#why" className="hover:text-white transition-colors">Why IPB</a>
-              <a href="#apply" className="hover:text-white transition-colors">Apply Now</a>
-            </div>
+            <p className="label text-[#FF6B00] mb-4">Courses</p>
+            <ul className="space-y-2">{courses.map(c => <li key={c.id}><a href="#courses" className="text-sm text-white/50 hover:text-white transition-colors font-inter">{c.short}</a></li>)}</ul>
           </div>
           <div>
-            <h4 className="text-[#C9A84C] font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h4>
-            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm">
-              <span>{siteConfig.phone}</span>
-              <span>{siteConfig.email}</span>
-              <span>{siteConfig.address}</span>
-            </div>
+            <p className="label text-[#FF6B00] mb-4">Quick Links</p>
+            <ul className="space-y-2">{[["Placements","#recruiters"],["Why IPB","#why"],["Apply Now","#contact"]].map(([l,h]) => <li key={l}><a href={h} className="text-sm text-white/50 hover:text-white transition-colors font-inter">{l}</a></li>)}</ul>
+          </div>
+          <div>
+            <p className="label text-[#FF6B00] mb-4">Contact</p>
+            <ul className="space-y-2 text-sm text-white/50 font-inter">
+              <li>{siteConfig.phone}</li><li>{siteConfig.email}</li><li>{siteConfig.location}</li>
+            </ul>
           </div>
         </div>
-        <div className="border-t border-[#C9A84C]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#94A3B8] text-sm">&copy; {new Date().getFullYear()} IPB Kochi &middot; A Versa Growth Ventures Company</p>
-          <p className="text-[#94A3B8] text-sm">Built by <span className="text-[#C9A84C]">Loopgen Technologies</span></p>
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between gap-2">
+          <p className="text-xs text-white/25 font-inter">© {new Date().getFullYear()} IPB Kochi | Part of Versa Growth Ventures</p>
+          <p className="text-xs text-white/25 font-inter">Designed by Loopgen Technologies</p>
         </div>
       </div>
     </footer>

@@ -1,99 +1,35 @@
-export const siteConfig = {
-  name: "IPB Kochi",
-  fullName: "Institute of Professional Banking",
-  tagline: "Your Banking Career Starts Here.",
-  description: "Kerala's premier banking institute with 13,200+ placements till March 2026.",
-  badge: "KERALA'S PREMIER BANKING INSTITUTE",
-  phone: "+91 8891129111",
-  whatsapp: "918891129111",
-  email: "info@ipbkochi.com",
-  address: "Kochi, Kerala, India",
-}
-
-export const stats = [
-  { value: 13200, suffix: "+", label: "Students Placed" },
-  { value: 14, suffix: "", label: "States" },
-  { value: 34, suffix: "", label: "Centers" },
-  { value: 185, suffix: "+", label: "Team Members" },
-  { value: 25, suffix: "+", label: "Recruiting Banks" },
-  { value: 2.6, suffix: " LPA", label: "Average Package", isFloat: true },
-]
+export const siteConfig = { name: "IPB Kochi", phone: "+91 8891129111", whatsapp: "918891129111", email: "info@ipbkochi.com", location: "Kochi, Kerala, India" }
 
 export const courses = [
-  {
-    id: "cbfs",
-    name: "CBFS — Certified Banking & Finance Specialist",
-    duration: "3 Months",
-    salary: "₹2.4 to 3.6 LPA",
-    description: "Comprehensive banking foundation program covering retail banking, BFSI operations, and customer service.",
-    highlights: ["100% Placement Guarantee", "Retail Banking", "BFSI Operations", "Interview Preparation"],
-    color: "#C9A84C",
-  },
-  {
-    id: "po-utkarsh",
-    name: "PO Program — Utkarsh Small Finance Bank",
-    duration: "1 Year",
-    salary: "₹5 LPA",
-    description: "Exclusive Probationary Officer program in partnership with Utkarsh Small Finance Bank.",
-    highlights: ["Direct Bank Placement", "Leadership Training", "Branch Operations", "HR Partnership"],
-    color: "#4A7C59",
-  },
-  {
-    id: "htd-dcb",
-    name: "HTD Program — DCB Bank",
-    duration: "2 Weeks",
-    salary: "₹3.5 LPA",
-    description: "High-intensity training and direct placement program with DCB Bank.",
-    highlights: ["Direct DCB Placement", "Fast Track", "On-the-job Training", "Guaranteed Offer"],
-    color: "#1B2A4A",
-  },
-  {
-    id: "equitas",
-    name: "Equitas IGNITE Program",
-    duration: "2 Weeks",
-    salary: "₹3.5 LPA",
-    description: "Equitas Bank partnership program for fast-tracked banking careers.",
-    highlights: ["Equitas Bank", "IGNITE Training", "Career Support", "Direct Placement"],
-    color: "#8FBC5A",
-  },
+  { id: "cbfs", num: "01", duration: "3 Months", name: "Certificate in Banking & Financial Services", short: "CBFS", salary: "₹2.4 – 3.6 LPA", highlights: ["Live banking simulations","Mock interviews","Placement in 60 days","NISM certified"], bg: "#ffffff", textDark: true },
+  { id: "po", num: "02", duration: "1 Year", name: "Probationary Officer Program — Utkarsh Bank", short: "PO Program", salary: "₹5 LPA Guaranteed", highlights: ["Direct bank partnership","Guaranteed placement","Intensive training","Stipend during training"], bg: "#003087", textDark: false },
+  { id: "htd", num: "03", duration: "2 Weeks", name: "HTD Program — DCB Bank", short: "HTD DCB", salary: "₹3.5 LPA Guaranteed", highlights: ["Hired first. Trained second.","DCB Bank direct hire","Zero placement risk","Immediate joining"], bg: "#ffffff", textDark: true },
+  { id: "equitas", num: "04", duration: "2 Weeks", name: "Equitas IGNITE Program", short: "Equitas IGNITE", salary: "₹3.5 LPA + Incentives", highlights: ["Fee refund after 1 year","Performance bonuses","Fast-track banking career","Direct Equitas hire"], bg: "#003087", textDark: false },
 ]
 
-export const recruiters = [
-  "Kotak Mahindra Bank", "IndusInd Bank", "Yes Bank", "Bandhan Bank",
-  "DCB Bank", "IDFC First Bank", "HDFC Bank", "CSB Bank",
-  "Utkarsh Small Finance Bank", "AU Small Finance Bank", "Ujjivan Small Finance Bank",
-  "Equitas Small Finance Bank", "Jana Small Finance Bank", "RBL Bank",
-  "Punjab National Bank", "Muthoot Finance", "IIFL Finance",
+export const banks = ["HDFC Bank","Kotak Mahindra","IndusInd Bank","Yes Bank","Bandhan Bank","DCB Bank","IDFC First","CSB Bank","Utkarsh SFB","AU Small Finance","Ujjivan SFB","Equitas SFB","Jana SFB","RBL Bank","Muthoot Finance","IIFL Finance","Axis Bank"]
+
+export const numberPhases = [
+  { num: "13,200+", label: "Students Placed in Leading Banks", color: "#FF6B00" },
+  { num: "100%", label: "Placement Assistance Guaranteed", color: "#003087" },
+  { num: "2.6 LPA", label: "Average Starting Package", color: "#FF6B00" },
 ]
 
 export const whyIPB = [
-  { title: "ISO 9001:2015 Certified", description: "Quality assured training meeting international standards." },
-  { title: "NSDC Approved Partner", description: "National Skill Development Corporation approved training center." },
-  { title: "13,200+ Placements", description: "Proven track record till 31st March 2026 across India." },
-  { title: "25+ Recruiting Banks", description: "Strong partnerships with leading banks and NBFCs." },
-  { title: "2.6 LPA Average Package", description: "Competitive salaries for our graduates." },
-  { title: "14 States Network", description: "Pan-India presence with 34 centers across 14 states." },
-  { title: "Expert Faculty", description: "Trainers with real banking experience from top institutions." },
-  { title: "Interview Support", description: "Mock interviews and grooming sessions for every student." },
+  { title: "ISO 9001:2015", desc: "Internationally certified quality management" },
+  { title: "NSDC Approved", desc: "Govt. approved skill development program" },
+  { title: "Ex-Senior Bankers", desc: "Faculty with 15+ years bank experience" },
+  { title: "Interactive Training", desc: "Live simulations, not just theory" },
+  { title: "Doubt Clearing", desc: "24/7 student support and mentoring" },
+  { title: "Latest Syllabus", desc: "Updated quarterly with industry changes" },
+  { title: "NISM Preparation", desc: "Industry certification included" },
+  { title: "100% Placement", desc: "Guaranteed placement or full refund" },
 ]
 
 export const testimonials = [
-  {
-    name: "Arjun Nair",
-    role: "Relationship Manager, Kotak Bank",
-    text: "IPB Kochi transformed my career. Within 3 months of the CBFS program, I was placed at Kotak Bank. The training was practical and industry-focused.",
-    location: "Kochi, Kerala",
-  },
-  {
-    name: "Priya Menon",
-    role: "Branch Executive, DCB Bank",
-    text: "The HTD Program was intense but worth every moment. I got placed directly at DCB Bank. The faculty support was exceptional throughout the journey.",
-    location: "Thrissur, Kerala",
-  },
-  {
-    name: "Rahul Krishnan",
-    role: "PO, Utkarsh Small Finance Bank",
-    text: "The 1-year PO program at IPB gave me a 5 LPA package at Utkarsh Bank. The leadership training and bank-specific modules were excellent.",
-    location: "Kozhikode, Kerala",
-  },
+  { name: "Anjali Thomas", bank: "Kotak Mahindra Bank", quote: "IPB's training was incredible. I had three offers in 45 days. The mock interviews prepared me perfectly for the real thing.", initials: "AT" },
+  { name: "Rahul Menon", bank: "HDFC Bank", quote: "I tried other institutes but IPB is different — real bank trainers, real simulations. I got placed at HDFC within 2 months.", initials: "RM" },
+  { name: "Priya Nair", bank: "IndusInd Bank", quote: "From zero banking knowledge to a confirmed job offer at IndusInd in 3 months. IPB changed my life completely.", initials: "PN" },
 ]
+
+export const statement = "13,200 careers launched. Every single one of them started with one decision. Make yours today."

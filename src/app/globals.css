@@ -1,65 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #0A1628;
-  --foreground: #FFFFFF;
-  --accent: #C9A84C;
-  --radius: 0.75rem;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
-}
-
-::selection { background: #C9A84C; color: #0A1628; }
-
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
-}
-
-.gold-gradient {
-  background: linear-gradient(135deg, #C9A84C, #F5D78E, #C9A84C);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cursor-dot {
-  width: 6px; height: 6px; background: #C9A84C;
-  border-radius: 50%; position: fixed; pointer-events: none;
-  z-index: 9999; transform: translate(-50%, -50%);
-}
-
-.cursor-ring {
-  width: 40px; height: 40px; border: 1.5px solid #C9A84C;
-  border-radius: 50%; position: fixed; pointer-events: none;
-  z-index: 9998; transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s;
-}
-
-@keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
-}
-.gold-pulse { animation: pulse-gold 2s infinite; }
-
-@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.ticker-track { animation: ticker 25s linear infinite; }
-
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.float-animation { animation: float 3s ease-in-out infinite; }
-
-@keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-}
-.whatsapp-pulse { animation: pulse-green 2s infinite; }
+﻿@import "tailwindcss";
+:root { --navy:#003087;--navy-dark:#001A5C;--orange:#FF6B00; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#fff;color:#1A1A2E;font-family:var(--font-inter),sans-serif;overflow-x:hidden}
+::selection{background:rgba(255,107,0,.2);color:#003087}
+.word-wrap{display:inline-block;overflow:hidden;margin-right:.28em}
+.word{display:inline-block;will-change:transform}
+.label{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-family:var(--font-inter),sans-serif}
+@keyframes pulse-wa{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
