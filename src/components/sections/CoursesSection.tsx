@@ -1,62 +1,40 @@
-"use client"
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { courses } from "@/lib/data"
-gsap.registerPlugin(ScrollTrigger)
+import Link from "next/link"
+import { COURSES } from "@/lib/data"
 
-function CourseCard({ c }: { c: typeof courses[0] }) {
-  const sec = useRef<HTMLElement>(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const words = sec.current?.querySelectorAll(".word")
-      const extras = sec.current?.querySelectorAll(".c-extra")
-      if (!words) return
-      gsap.set([words, extras ?? []], { y: 50, opacity: 0 })
-      ScrollTrigger.create({
-        trigger: sec.current, start: "top 75%",
-        onEnter: () => {
-          gsap.to(words, { y: 0, opacity: 1, stagger: 0.07, duration: 0.9, ease: "power4.out" })
-          gsap.to(extras ?? [], { y: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: "power3.out", delay: 0.3 })
-        }
-      })
-    }, sec)
-    return () => ctx.revert()
-  }, [])
-  const dark = !c.textDark
-  const textClr = c.textDark ? "#1A1A2E" : "#FFFFFF"
-  const mutedClr = c.textDark ? "#64748B" : "rgba(255,255,255,0.7)"
+export default function CoursesSection() {
   return (
-    <section ref={sec} id={`course-${c.id}`} className="min-h-screen flex items-center overflow-hidden px-6 md:px-16 py-24" style={{ background: c.bg }}>
-      <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div>
-          <div className="word-wrap mb-4"><span className="word label" style={{ color: "#FF6B00", letterSpacing: "3px" }}>{c.num} / {c.duration} Program</span></div>
-          <h2 className="font-poppins font-bold mb-4" style={{ fontSize: "clamp(32px,5vw,64px)", lineHeight: 1.05, color: textClr }}>
-            {c.name.split(" ").map((w, i) => <span key={i} className="word-wrap"><span className="word">{w} </span></span>)}
-          </h2>
-          <div className="c-extra">
-            <p className="font-poppins font-semibold text-2xl mb-6" style={{ color: "#FF6B00" }}>{c.salary}</p>
-            <ul className="space-y-3 mb-8">
-              {c.highlights.map(h => (
-                <li key={h} className="flex items-center gap-3 font-inter text-sm" style={{ color: mutedClr }}>
-                  <span className="text-[#FF6B00] flex-shrink-0">✓</span>{h}
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" className="inline-flex items-center px-7 py-3.5 bg-[#FF6B00] hover:bg-[#E55A00] text-white font-poppins font-semibold text-sm transition-colors rounded-sm">Apply for This Program →</a>
-          </div>
+    <section className="py-20 bg-[#0A1628]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">OUR PROGRAMS</p>
+          <h2 className="font-montserrat text-4xl font-bold text-[#F0EDE6]">Four Ways to Your Banking Career</h2>
         </div>
-        <div className="c-extra flex items-center justify-center min-h-[200px] rounded-2xl" style={{ background: dark ? "rgba(255,255,255,0.05)" : "rgba(0,48,135,0.05)", border: "1px solid rgba(255,107,0,0.2)" }}>
-          <div className="text-center p-10">
-            <div className="font-poppins font-bold text-6xl text-[#FF6B00] mb-2">{c.num}</div>
-            <p className="font-inter text-sm" style={{ color: mutedClr, letterSpacing: "2px" }}>{c.short.toUpperCase()}</p>
-          </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {COURSES.map(c => (
+            <div key={c.id} className="glass-card rounded-2xl p-8 hover:border-[#C9A84C]/30 transition-all border border-transparent">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-montserrat text-2xl font-black" style={{ color: c.color }}>{c.short}</span>
+                <div className="text-right">
+                  <span className="text-[#A8B89A] text-xs">{c.duration}</span>
+                  <p className="font-bold text-[#C9A84C]">{c.fee}</p>
+                </div>
+              </div>
+              <h3 className="font-montserrat text-lg font-bold text-[#F0EDE6] mb-2">{c.name}</h3>
+              <p className="text-[#A8B89A] text-sm leading-relaxed mb-4">{c.desc.substring(0, 160)}...</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {c.banks.slice(0,4).map(b => <span key={b} className="text-xs px-2 py-1 rounded" style={{ background: `${c.color}20`, color: c.color }}>{b}</span>)}
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#10B981] text-sm font-medium">✓ {c.placements}</span>
+                <Link href={`/courses/${c.id}`} className="text-xs tracking-widest text-[#C9A84C] hover:underline">DETAILS →</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Link href="/courses" className="inline-block px-10 py-4 border border-[#C9A84C] text-[#C9A84C] text-sm tracking-widest uppercase hover:bg-[#C9A84C]/10 transition-colors">View All Courses</Link>
         </div>
       </div>
     </section>
   )
-}
-
-export default function CoursesSection() {
-  return <div id="courses">{courses.map(c => <CourseCard key={c.id} c={c} />)}</div>
 }

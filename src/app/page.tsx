@@ -1,27 +1,30 @@
-import LoadingScreen from "@/components/loading/LoadingScreen"
+import type { Metadata } from "next"
+import ClientWrapper from "@/components/layout/ClientWrapper"
 import HeroSection from "@/components/sections/HeroSection"
-import NumbersSection from "@/components/sections/NumbersSection"
+import ProblemSection from "@/components/sections/ProblemSection"
 import CoursesSection from "@/components/sections/CoursesSection"
-import StatementSection from "@/components/sections/StatementSection"
-import RecruitersSection from "@/components/sections/RecruitersSection"
-import WhyIPBSection from "@/components/sections/WhyIPBSection"
-import ApplicationSection from "@/components/sections/ApplicationSection"
-import MobileStickyBar from "@/components/ui/MobileStickyBar"
+import PlacementsSection from "@/components/sections/PlacementsSection"
+import FoundersSection from "@/components/sections/FoundersSection"
+import BlogSection from "@/components/sections/BlogSection"
+import FAQSection from "@/components/sections/FAQSection"
+import SchemesSection from "@/components/sections/SchemesSection"
+
+export const metadata: Metadata = {
+  title: "IPB Kochi — Kerala's #1 Banking Career Institute | 13,200+ Placements",
+  description: "Join IPB Kochi — Kerala's premier banking institute with 13,200+ placements in 25+ banks. CBFS, PO Program, HTD DCB, Equitas Ignite.",
+}
 
 export default function HomePage() {
   return (
-    <>
-      <LoadingScreen />
-      <main>
-        <HeroSection />
-        <NumbersSection />
-        <CoursesSection />
-        <StatementSection />
-        <RecruitersSection />
-        <WhyIPBSection />
-        <ApplicationSection />
-      </main>
-      <MobileStickyBar />
-    </>
+    <ClientWrapper>
+      <HeroSection />
+      <ProblemSection />
+      <CoursesSection />
+      <PlacementsSection />
+      <FoundersSection />
+      <BlogSection />
+      <FAQSection />
+      <SchemesSection />
+    </ClientWrapper>
   )
 }
