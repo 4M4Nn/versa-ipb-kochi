@@ -1,60 +1,66 @@
-"use client"
 import Link from "next/link"
-import { WA_URL, TOTAL_PLACED } from "@/lib/data"
-import { useEffect, useState } from "react"
+import Image from "next/image"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { SITE, STATS } from "@/lib/data"
 
 export default function HeroSection() {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    const dur = 2000, target = TOTAL_PLACED, steps = 60
-    let i = 0
-    const t = setInterval(() => {
-      i++
-      setCount(Math.round(target * Math.min(i / steps, 1)))
-      if (i >= steps) clearInterval(t)
-    }, dur / steps)
-    return () => clearInterval(t)
-  }, [])
+  const waUrl = `https://wa.me/91${SITE.phone.replace(/\D/g, "").slice(-10)}`
 
   return (
-    <section className="relative min-h-screen bg-[#0A1628] flex items-center overflow-hidden">
-      {/* Animated bank columns background */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(90deg, #003087 0, #003087 2px, transparent 0, transparent 80px)" }} />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/50 via-transparent to-[#0A1628]" />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#0A1628] text-white py-20 px-4 overflow-hidden relative">
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 right-0 w-96 h-96 bg-[#FF6B00] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#003087] rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "rgba(0,48,135,0.3)", border: "1px solid rgba(201,168,76,0.3)" }}>
-            <span className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
-            <span className="text-xs text-[#C9A84C] tracking-widest uppercase">Kerala&apos;s #1 Banking Institute</span>
-          </div>
-          <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-bold text-[#F0EDE6] leading-tight mb-6">
-            Your Banking Career<br/>Starts <span className="text-[#FF6B00]">Right Here</span><br/>in Kochi.
+          <span className="inline-block bg-[#FF6B00]/20 text-[#FF6B00] text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+            India&apos;s Premier Banking Institute
+          </span>
+          <h1 className="font-poppins text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Build Your Banking Career with India&apos;s{" "}
+            <span className="text-[#FF6B00]">#1 Institute</span>
           </h1>
-          <p className="text-[#A8B89A] text-lg leading-relaxed mb-8 max-w-lg">
-            Over <strong className="text-[#C9A84C]">13,200 Kerala graduates</strong> have started their banking careers through IPB. Our focused programs, 25+ bank partnerships, and 100% placement assistance make us different.
+          <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            13,200+ students placed in top banks. 100% placement support. Industry-expert faculty. Start your banking journey today.
           </p>
-          <div className="flex flex-wrap gap-4 mb-8">
-            <Link href="/courses" className="px-8 py-4 bg-[#FF6B00] text-white font-bold text-sm tracking-widest uppercase hover:bg-[#FF8533] transition-colors">View Courses</Link>
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-[#C9A84C] text-[#C9A84C] text-sm tracking-widest uppercase hover:bg-[#C9A84C]/10 transition-colors">Free Counselling</a>
-          </div>
-          <div className="flex gap-6">
-            {[["25+","Bank Partners"],["100%","Placement Help"],["4","Specialized Courses"]].map(([v,l]) => (
-              <div key={l}>
-                <p className="font-montserrat text-2xl font-bold text-[#C9A84C]">{v}</p>
-                <p className="text-[#A8B89A] text-xs">{l}</p>
-              </div>
+          <ul className="space-y-2 mb-8">
+            {["NSDC Approved Certifications", "Guaranteed Bank Placement", "25+ Banking Partners", "8+ Years of Excellence"].map((item) => (
+              <li key={item} className="flex items-center gap-2.5 text-sm text-gray-200">
+                <CheckCircle2 size={16} className="text-[#FF6B00] shrink-0" />
+                {item}
+              </li>
             ))}
+          </ul>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/#courses"
+              className="flex items-center gap-2 bg-[#FF6B00] hover:bg-[#e55f00] text-white font-semibold px-7 py-3.5 rounded-lg transition-colors"
+            >
+              View Courses <ArrowRight size={18} />
+            </Link>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 border border-white/30 text-white font-semibold px-7 py-3.5 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              Apply on WhatsApp
+            </a>
           </div>
         </div>
-        <div className="flex items-center justify-center">
-          <div className="relative w-72 h-72 flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full" style={{ background: "radial-gradient(circle, rgba(0,48,135,0.4) 0%, transparent 70%)", animation: "pulse 3s ease-in-out infinite" }} />
-            <div className="text-center">
-              <p className="font-montserrat font-black text-[#C9A84C]" style={{ fontSize: "clamp(60px,10vw,96px)", lineHeight: 1 }}>{count.toLocaleString()}</p>
-              <p className="text-[#A8B89A] text-sm tracking-widest uppercase mt-2">Students Placed</p>
-              <p className="text-[#4A7C59] text-xs mt-1">And counting</p>
+
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 gap-4">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:border-[#FF6B00]/30 transition-colors">
+              <p className="font-poppins text-4xl font-bold text-[#FF6B00] mb-1">
+                {stat.value.toLocaleString("en-IN")}{stat.suffix}
+              </p>
+              <p className="text-gray-400 text-xs tracking-wide">{stat.label}</p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

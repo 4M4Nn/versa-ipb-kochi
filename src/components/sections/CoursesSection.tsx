@@ -1,38 +1,73 @@
 import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Clock, Check } from "lucide-react"
 import { COURSES } from "@/lib/data"
 
 export default function CoursesSection() {
   return (
-    <section className="py-20 bg-[#0A1628]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">OUR PROGRAMS</p>
-          <h2 className="font-montserrat text-4xl font-bold text-[#F0EDE6]">Four Ways to Your Banking Career</h2>
+    <section id="courses" className="py-20 bg-[#F8F9FA]">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-14">
+          <p className="text-[#FF6B00] text-xs font-semibold tracking-widest uppercase mb-3">Programs</p>
+          <h2 className="font-poppins text-3xl md:text-4xl font-bold text-[#0A1628]">Banking Courses & Programs</h2>
+          <p className="text-[#6B7280] mt-4 max-w-xl mx-auto">
+            Every program is designed with industry input and comes with 100% placement support.
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {COURSES.map(c => (
-            <div key={c.id} className="glass-card rounded-2xl p-8 hover:border-[#C9A84C]/30 transition-all border border-transparent">
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-montserrat text-2xl font-black" style={{ color: c.color }}>{c.short}</span>
-                <div className="text-right">
-                  <span className="text-[#A8B89A] text-xs">{c.duration}</span>
-                  <p className="font-bold text-[#C9A84C]">{c.fee}</p>
+
+        <div className="grid sm:grid-cols-2 gap-6">
+          {COURSES.map((course) => (
+            <div
+              key={course.id}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:border-transparent transition-all group"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={course.image}
+                  alt={course.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                  <span className="flex items-center gap-1 bg-white/20 backdrop-blur text-white text-xs px-2.5 py-1 rounded-full">
+                    <Clock size={12} /> {course.duration}
+                  </span>
+                  <div className="w-5 h-1 rounded-full" style={{ backgroundColor: course.color }} />
                 </div>
               </div>
-              <h3 className="font-montserrat text-lg font-bold text-[#F0EDE6] mb-2">{c.name}</h3>
-              <p className="text-[#A8B89A] text-sm leading-relaxed mb-4">{c.desc.substring(0, 160)}...</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {c.banks.slice(0,4).map(b => <span key={b} className="text-xs px-2 py-1 rounded" style={{ background: `${c.color}20`, color: c.color }}>{b}</span>)}
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[#10B981] text-sm font-medium">✓ {c.placements}</span>
-                <Link href={`/courses/${c.id}`} className="text-xs tracking-widest text-[#C9A84C] hover:underline">DETAILS →</Link>
+              <div className="p-6">
+                <h3 className="font-poppins text-lg font-bold text-[#0A1628] mb-2">{course.name}</h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed mb-4">{course.description}</p>
+                <ul className="space-y-1.5 mb-5">
+                  {course.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-2 text-xs text-[#374151]">
+                      <Check size={13} className="text-[#FF6B00] shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-[#6B7280]">{course.fee}</span>
+                  <Link
+                    href="/#contact"
+                    className="flex items-center gap-1 text-sm font-semibold text-[#FF6B00] hover:gap-2 transition-all"
+                  >
+                    Apply Now <ArrowRight size={14} />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="text-center mt-8">
-          <Link href="/courses" className="inline-block px-10 py-4 border border-[#C9A84C] text-[#C9A84C] text-sm tracking-widest uppercase hover:bg-[#C9A84C]/10 transition-colors">View All Courses</Link>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/courses"
+            className="inline-flex items-center gap-2 border border-[#003087] text-[#003087] font-semibold px-7 py-3 rounded-lg hover:bg-[#003087] hover:text-white transition-colors"
+          >
+            View All Courses <ArrowRight size={18} />
+          </Link>
         </div>
       </div>
     </section>

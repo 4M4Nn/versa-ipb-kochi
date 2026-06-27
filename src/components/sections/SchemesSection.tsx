@@ -1,24 +1,31 @@
-import { SCHEMES, WA_URL } from "@/lib/data"
+import { OFFER, SITE } from "@/lib/data"
+
 export default function SchemesSection() {
+  const waUrl = `https://wa.me/91${SITE.phone.replace(/\D/g, "").slice(-10)}`
+
   return (
-    <section className="py-20 bg-[#060D1A]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">SPECIAL OFFERS</p>
-          <h2 className="font-montserrat text-3xl font-bold text-[#F0EDE6]">Admission Schemes</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {SCHEMES.map(s => (
-            <div key={s.title} className="glass-card rounded-2xl p-7 flex flex-col gap-4 hover:border-[#C9A84C]/20 transition-all border border-transparent">
-              <span className="text-xs tracking-widest px-3 py-1 rounded-full self-start" style={{ background:"#FF6B0020", color:"#FF6B00" }}>{s.tag}</span>
-              <h3 className="font-montserrat text-xl font-bold text-[#F0EDE6]">{s.title}</h3>
-              <p className="text-[#A8B89A] text-sm leading-relaxed flex-1">{s.desc}</p>
-              <a href={`${WA_URL}?text=${encodeURIComponent(s.cta)}`} target="_blank" rel="noopener noreferrer"
-                className="text-center py-3 bg-[#FF6B00] text-white text-sm tracking-widest hover:bg-[#FF8533] transition-colors font-medium">
-                {s.cta}
-              </a>
-            </div>
-          ))}
+    <section className="py-20 bg-[#003087] text-white">
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <span className="inline-block bg-[#FF6B00] text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase mb-6">
+          {OFFER.badge}
+        </span>
+        <h2 className="font-poppins text-3xl md:text-4xl font-bold mb-4">{OFFER.heading}</h2>
+        <p className="text-blue-200 text-lg mb-8 max-w-xl mx-auto">{OFFER.description}</p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#FF6B00] hover:bg-[#e55f00] text-white font-bold px-8 py-4 rounded-lg transition-colors"
+          >
+            {OFFER.cta}
+          </a>
+          <a
+            href="/#contact"
+            className="inline-block border border-white/40 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
+          >
+            Book Consultation
+          </a>
         </div>
       </div>
     </section>

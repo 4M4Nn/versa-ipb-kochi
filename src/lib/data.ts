@@ -1,139 +1,279 @@
-import type { Course, Founder, BlogPost, FAQ, Scheme, NavLink, Placement } from "@/types"
+import type { Course, Testimonial, BlogPost, Stat, FAQ, NavLink, TrustBadge } from "@/types"
 
-export const SITE_NAME = "IPB Kochi"
-export const SITE_TAGLINE = "Kerala's #1 Banking Career Institute"
-export const SITE_DESCRIPTION = "IPB Kochi has placed 13,200+ students in top Indian banks. Expert-led banking programs with 100% placement assistance."
-export const PHONE = "+91 7907215816"
-export const WHATSAPP = "917907215816"
-export const WA_URL = "https://wa.me/917907215816"
-export const EMAIL = "admissions@ipbkochi.com"
-export const ADDRESS = "Kochi, Kerala, India"
-export const SOURCE = "ipb-kochi"
-export const TOTAL_PLACED = 13200
-export const PARENT_URL = "https://versagrowthventures.com"
+export const SITE = {
+  name: "IPB Kochi",
+  tagline: "India's Premier Banking Institute",
+  phone: "+91 7907215816",
+  email: "admissions@ipbkochi.com",
+  address: "Kochi, Kerala, India",
+  parent: "versagrowthventures.com",
+  description: "IPB Kochi is India's leading banking training institute with 13,200+ students placed in top banks across India.",
+}
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "Courses", href: "/courses" },
-  { label: "Placements", href: "/placements" },
-  { label: "About", href: "/about" },
+  { label: "Courses", href: "/#courses" },
+  { label: "Placements", href: "/#placements" },
+  { label: "About", href: "/#about" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Schemes", href: "/schemes" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 export const COURSES: Course[] = [
   {
-    id: "cbfs", name: "Certificate in Banking & Financial Services", short: "CBFS",
-    duration: "6 months", fee: "₹35,000", color: "#C9A84C",
-    banks: ["SBI", "HDFC", "Axis", "ICICI", "Canara", "Federal"],
-    highlights: ["KYC & AML compliance", "Digital banking platforms", "Customer acquisition", "Loan processing basics", "Investment product knowledge"],
-    eligibility: "Any graduate (minimum 50% marks)", placements: "2,800+ placements",
-    desc: "Our flagship program — the most comprehensive entry-level banking certification in Kerala. Designed by senior bankers, this 6-month intensive covers everything from RBI compliance to digital banking systems, customer relationship management, and financial product sales. Graduates consistently receive multiple bank interview calls.",
+    id: "cbfs",
+    name: "Certified Banking & Financial Services (CBFS)",
+    duration: "3 Months",
+    description:
+      "India's most recognized banking certification. Covers retail banking, financial products, customer service, and compliance.",
+    highlights: [
+      "NSDC Approved",
+      "100% Placement Support",
+      "2.4-3 LPA Starting",
+      "Industry Mentors",
+    ],
+    fee: "Contact for Details",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80&auto=format&fit=crop",
+    color: "#003087",
   },
   {
-    id: "po-program", name: "Probationary Officer Preparation", short: "PO Program",
-    duration: "4 months", fee: "₹28,000", color: "#003087",
-    banks: ["SBI PO", "IBPS PO", "Bank of Baroda", "Canara Bank PO"],
-    highlights: ["Quantitative aptitude mastery", "Reasoning & English", "General awareness & banking", "Mock test series (200+)", "Interview preparation"],
-    eligibility: "Graduates below 30 years of age", placements: "5,200+ IBPS/SBI selections",
-    desc: "India's banking sector hires thousands of Probationary Officers every year. Our PO Program has been the launchpad for over 5,200 Kerala candidates who cleared IBPS PO, SBI PO, and other competitive exams. Our structured curriculum, 200+ mock tests, and dedicated interview coaching give you the edge.",
+    id: "po-program",
+    name: "PO Program – Utkarsh Small Finance Bank",
+    duration: "1 Year",
+    description:
+      "Full-time Probationary Officer training program with guaranteed placement at Utkarsh Small Finance Bank upon completion.",
+    highlights: [
+      "Guaranteed Placement",
+      "2.8-4 LPA Package",
+      "Bank-Sponsored Training",
+      "Leadership Track",
+    ],
+    fee: "Contact for Details",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80&auto=format&fit=crop",
+    color: "#FF6B00",
   },
   {
-    id: "htd-dcb", name: "Home Loan & Trade Finance (DCB Focus)", short: "HTD DCB",
-    duration: "3 months", fee: "₹22,000", color: "#FF6B00",
-    banks: ["DCB Bank", "IDFC First", "Kotak Mahindra", "Yes Bank"],
-    highlights: ["Home loan processing", "Trade finance documents", "Foreign exchange basics", "DCB-specific protocols", "Credit appraisal"],
-    eligibility: "Any graduate", placements: "1,800+ specialized placements",
-    desc: "A specialized program developed in partnership with DCB Bank for fast-track placement in home loan and trade finance verticals. This focused 3-month course gives candidates specific technical skills that command higher starting packages. Placement success rate for this program exceeds 94%.",
+    id: "htd-dcb",
+    name: "HTD – DCB Bank",
+    duration: "2 Weeks",
+    description:
+      "Rapid job-ready program for DCB Bank roles. Intensive training on banking operations, customer handling, and digital tools.",
+    highlights: [
+      "Fast-Track 2 Weeks",
+      "Direct Bank Placement",
+      "Digital Banking Focus",
+      "Immediate Joining",
+    ],
+    fee: "Contact for Details",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop",
+    color: "#C9A84C",
   },
   {
-    id: "equitas-ignite", name: "Equitas Ignite — Small Finance Banking", short: "Equitas Ignite",
-    duration: "2 months", fee: "₹15,000", color: "#10B981",
-    banks: ["Equitas Small Finance Bank", "Jana Small Finance Bank", "Ujjivan SFB"],
-    highlights: ["Microfinance fundamentals", "Self-help group banking", "Rural & semi-urban banking", "Financial inclusion products", "Equitas systems training"],
-    eligibility: "Any graduate (freshers preferred)", placements: "3,400+ SFB placements",
-    desc: "Small Finance Banks are the fastest-growing segment in Indian banking — and they are hiring aggressively. Equitas Ignite is a co-branded program with Equitas Small Finance Bank that provides direct placement pipeline for graduates interested in serving India's underbanked population. This program opens doors that most candidates don't even know exist.",
+    id: "equitas",
+    name: "Equitas IGNITE",
+    duration: "2 Weeks",
+    description:
+      "Equitas Small Finance Bank's exclusive hiring program. Intensive training followed by guaranteed placement at Equitas branches.",
+    highlights: [
+      "Equitas Bank Partnership",
+      "2.4+ LPA CTC",
+      "2-Week Intensive",
+      "Pan-India Placement",
+    ],
+    fee: "Contact for Details",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80&auto=format&fit=crop",
+    color: "#10B981",
   },
 ]
 
-export const FOUNDERS: Founder[] = [
+export const STATS: Stat[] = [
+  { value: 13200, suffix: "+", label: "Students Placed" },
+  { value: 100, suffix: "%", label: "Placement Rate" },
+  { value: 25, suffix: "+", label: "Bank Partners" },
+  { value: 8, suffix: "+", label: "Years of Trust" },
+]
+
+export const TRUST_BADGES: TrustBadge[] = [
   {
-    name: "Sandeep Neelamana", role: "Founder & Operations Head", monogram: "SN", color: "#4A7C59",
-    bio: "Sandeep oversees the operational excellence that has made IPB Kochi's placement record the benchmark for banking education in Kerala. His systems thinking ensures every student gets the full IPB experience.",
-    quote: "Systems create freedom. When operations run perfectly, students can focus on learning.",
+    title: "13,200+ Placed",
+    subtitle: "India's largest banking placement record",
+    icon: "award",
   },
   {
-    name: "Sreenivasa Prabhu", role: "Founder & Finance Head", monogram: "SP", color: "#C9A84C",
-    bio: "Sreenivasa's financial strategy has kept IPB affordable without compromising quality. His banking sector relationships are the backbone of our placement network.",
-    quote: "Banking education should be accessible to every Kerala graduate. We made that happen.",
+    title: "ISO Certified",
+    subtitle: "Quality assured training programs",
+    icon: "shield",
   },
   {
-    name: "Aman Faisal S", role: "Founder & Marketing Head", monogram: "AF", color: "#FF6B00",
-    bio: "Aman built IPB's reputation from zero to the most recognized banking institute in Kerala. His marketing vision connects the right students with the right opportunities.",
-    quote: "The best banking career starts with the right first step. IPB is that step for Kerala.",
+    title: "NSDC Approved",
+    subtitle: "National Skill Development Corporation",
+    icon: "check-circle",
   },
 ]
 
-export const PLACEMENTS: Placement[] = [
-  { name: "Anjali Suresh", role: "Banking Associate", bank: "HDFC Bank", year: "2024", package: "₹3.2 LPA" },
-  { name: "Rohith Menon", role: "Probationary Officer", bank: "SBI", year: "2024", package: "₹4.1 LPA" },
-  { name: "Priya Nair", role: "Relationship Manager", bank: "Axis Bank", year: "2023", package: "₹3.8 LPA" },
-  { name: "Muhammed Rashid", role: "Home Loan Executive", bank: "DCB Bank", year: "2024", package: "₹3.5 LPA" },
-  { name: "Divya Krishnan", role: "Branch Officer", bank: "Canara Bank", year: "2023", package: "₹3.6 LPA" },
-  { name: "Arun Kumar", role: "SFB Officer", bank: "Equitas SFB", year: "2024", package: "₹2.8 LPA" },
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: "Anjali Menon",
+    course: "CBFS 2024",
+    company: "HDFC Bank",
+    quote:
+      "IPB Kochi changed my life. Within 3 months of completing CBFS, I was placed at HDFC Bank as a Personal Banker. The faculty are incredible and the placement support is unmatched.",
+    rating: 5,
+  },
+  {
+    name: "Rahul Krishnan",
+    course: "PO Program 2024",
+    company: "Utkarsh Small Finance Bank",
+    quote:
+      "The PO Program is incredibly comprehensive. The faculty are ex-bankers who teach with real-world case studies. I learned more in one year than I could have in five years on the job.",
+    rating: 5,
+  },
+  {
+    name: "Priya Nair",
+    course: "Equitas IGNITE",
+    company: "Equitas SFB",
+    quote:
+      "2 weeks felt short but the training was intense and practical. Got placed at Equitas Bank immediately after completing the program. Best investment I ever made in my career.",
+    rating: 5,
+  },
+  {
+    name: "Arun Pillai",
+    course: "HTD DCB",
+    company: "DCB Bank",
+    quote:
+      "Best decision of my career. The placement team at IPB is exceptional. They guided me every step of the way and helped me land a great role at DCB Bank.",
+    rating: 5,
+  },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "ibps-po-strategy-2026",
-    title: "How to Clear IBPS PO 2026: A Complete Strategy Guide",
-    date: "June 2026", tag: "Exam Tips",
-    excerpt: "IBPS PO 2026 is one of the most competitive exams in India. Here is the exact preparation strategy our top-scoring students used.",
-    body: `The IBPS PO exam is a gateway to a prestigious banking career, but it demands disciplined preparation across multiple sections.\n\nThe Quantitative Aptitude section trips most candidates. The key is not just solving problems but solving them fast. Our mock test series trains you to target 80%+ accuracy at speed, not perfection at leisure.\n\nReasoning Ability rewards pattern recognition. Daily practice with IPB's reasoning workbook (500+ questions) builds the mental agility that separates toppers from also-rans.\n\nEnglish Language is often underestimated. Reading financial newspapers daily — The Hindu Business Line, Mint — gives you both vocabulary and current affairs in one habit.\n\nBanking Awareness is the great equalizer. Most candidates know general knowledge. IPB's banking awareness module covers RBI policies, recent scheme launches, and banking terminology in focused 30-minute daily sessions.\n\nOur success rate for IBPS PO: 68% of enrolled students who complete the full program clear the written exam. The national average is under 2%.`,
+    title: "Complete IBPS PO Strategy for Kerala Students 2026",
+    category: "Exam Strategy",
+    date: "June 2026",
+    excerpt:
+      "Crack IBPS PO with this step-by-step preparation strategy from IPB Kochi faculty.",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80&auto=format&fit=crop",
+    body: `The IBPS PO examination remains one of the most competitive and sought-after banking exams in India, especially for graduates in Kerala. With thousands of aspirants vying for limited seats, a structured preparation strategy is essential to stand out and succeed.
+
+The first step to cracking IBPS PO is understanding the exam pattern thoroughly. The examination consists of a Preliminary exam, Mains exam, and an Interview round. The Prelims covers English Language, Quantitative Aptitude, and Reasoning Ability — each section with its own sectional cutoffs. Mains adds General Awareness, Computer Aptitude, and a Descriptive Writing section. Knowing where you stand in each area helps you prioritize your study time effectively.
+
+For Kerala students specifically, the advantage lies in the strong English foundation many graduates possess. However, Quantitative Aptitude and Reasoning sections often need extra focus. Our faculty at IPB Kochi recommends dedicating at least 3 hours daily to these sections in the first two months of preparation. Use standard reference books, previous year papers, and online mock tests to build speed and accuracy.
+
+General Awareness is another crucial differentiator. Stay updated with banking news, RBI policy changes, government schemes, and economic developments. Read financial newspapers daily and maintain a monthly current affairs notebook. At IPB Kochi, we provide weekly current affairs capsules specifically curated for banking exams, which has helped hundreds of our students clear the General Awareness section with high scores. With consistent effort and the right guidance, IBPS PO 2026 is very much achievable.`,
   },
   {
-    slug: "banking-career-kerala-guide",
-    title: "The Complete Guide to Starting a Banking Career from Kerala",
-    date: "May 2026", tag: "Career Guide",
-    excerpt: "Everything Kerala graduates need to know about starting a banking career — from choosing the right exam to getting your first placement.",
-    body: `Kerala consistently produces some of India's best banking professionals. The state's high literacy rate, financial awareness, and strong work ethic make Kerala graduates highly sought-after by major banks.\n\nThe first decision is choosing your path: public sector banking (SBI, nationalized banks) via IBPS/SBI exams, or private sector banking (HDFC, Axis, ICICI) via direct recruitment.\n\nPublic sector banking offers job security, pension benefits, and respectability. Private sector offers faster salary growth and more dynamic environments. Both are excellent careers.\n\nFor public sector, start IBPS preparation immediately after graduation. The window between 21-30 years is your prime opportunity — use it.\n\nFor private sector, the CBFS certification from IPB gives you the skills and credential that gets you interview calls. Our placement team has direct connections with HR heads at 25+ private banks.\n\nDon't delay. Every day you wait is a day your peers get ahead. IPB's admission process takes 48 hours. Your banking career could start this week.`,
+    slug: "banking-career-kerala",
+    title: "Why Banking is Kerala's Best Career Choice in 2026",
+    category: "Career Guide",
+    date: "May 2026",
+    excerpt:
+      "Explore why thousands of Kerala graduates are choosing banking as their career path.",
+    image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&q=80&auto=format&fit=crop",
+    body: `Kerala has long been known for producing some of India's most educated graduates, yet employment opportunities within the state have historically been limited. In 2026, the banking sector stands out as the single most promising career pathway for Kerala's youth, offering stability, growth, and competitive compensation that few other industries can match.
+
+The banking sector in India is expanding at an unprecedented rate. With the rise of small finance banks, payment banks, and the government's financial inclusion agenda, the demand for trained banking professionals has never been higher. Kerala graduates are particularly well-positioned to take advantage of this boom — the state's high literacy rate, strong English proficiency, and cultural emphasis on education make Kerala students ideal candidates for banking roles.
+
+Starting salaries in banking have improved significantly. Entry-level positions at private sector banks now offer 2.4 to 4 LPA, with rapid progression for performers. Unlike many other sectors, banking offers a clear career ladder from Executive to Manager to Branch Manager and beyond. The pension benefits, job security, and work-life balance of banking careers also make them particularly attractive for Kerala families who value stability.
+
+IPB Kochi has been at the forefront of this banking career movement in Kerala. With over 13,200 students placed in top banks across India, we have seen firsthand how a well-trained banking professional from Kerala can rise quickly through the ranks. Our alumni are now Branch Managers, Relationship Managers, and even Regional Heads at major banks — a testament to the quality of training and the limitless potential of a banking career for Kerala graduates.`,
   },
   {
     slug: "small-finance-bank-opportunity",
-    title: "Why Small Finance Banks Are Kerala's Best Banking Opportunity in 2026",
-    date: "April 2026", tag: "Industry",
-    excerpt: "Small Finance Banks are hiring aggressively and offering starting packages that rival traditional PSBs. Here's why SFBs are the hidden opportunity most Kerala graduates miss.",
-    body: `Small Finance Banks — Equitas, Jana, Ujjivan, AU — are the fastest-growing segment in Indian banking. They are mandate-driven (financial inclusion targets), growth-oriented, and chronically understaffed in Kerala.\n\nThe hiring math is simple: SFBs need to grow their branch networks to meet RBI targets. They need branch officers, relationship managers, and customer service executives by the thousands. Kerala, with its educated workforce and financial literacy, is a prime hiring ground.\n\nStarting packages at SFBs range from ₹2.8-4.0 LPA depending on role — comparable to entry-level PSB positions without the 2-year exam preparation wait.\n\nThe career trajectory is faster too. SFBs promote merit over seniority. A motivated officer can move to branch manager level in 3-4 years — something that takes 10+ years in PSBs.\n\nIPB's Equitas Ignite program is the fastest route to SFB placement in Kerala. The co-branded certificate and direct referral to Equitas HR gives candidates a genuine first-mover advantage.`,
+    title: "Small Finance Banks: The Hidden Gem for Banking Freshers",
+    category: "Industry Insight",
+    date: "April 2026",
+    excerpt:
+      "Small finance banks offer faster growth, better packages, and more opportunities than traditional banks.",
+    image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&q=80&auto=format&fit=crop",
+    body: `When most banking aspirants think of a banking career, they immediately think of large public sector banks or established private banks like HDFC or ICICI. However, the smartest career move for freshers in 2026 might be to start with a Small Finance Bank (SFB) — and here is why this is the hidden gem that experienced banking professionals wish they had discovered earlier.
+
+Small Finance Banks like Equitas, Utkarsh, AU, Jana, and others are growing at rates of 25-35% annually, significantly outpacing traditional banks. This rapid growth creates an extraordinary number of promotion opportunities. In a traditional bank, you might wait 5-7 years for a significant promotion. In an SFB, performers can become Senior Executives, then Team Leaders, then Branch Managers within 3-4 years. The talent demand is so high that motivated individuals advance at a pace unheard of in conventional banking.
+
+The compensation at SFBs has also become highly competitive. What was once a perceived disadvantage — lower salaries compared to large private banks — has now been largely closed. Entry-level packages at top SFBs range from 2.4 to 3.6 LPA, and with performance incentives, many executives earn significantly more in their first year. Some SFBs also offer ESOPs (Employee Stock Ownership Plans) that can add substantial long-term value.
+
+At IPB Kochi, we have strong partnerships with Equitas Small Finance Bank and Utkarsh Small Finance Bank. Our Equitas IGNITE and PO Program courses are specifically designed to get candidates placement-ready for these institutions. We have placed over 3,000 students in SFBs across India, and the feedback consistently highlights the rapid career growth, supportive work environment, and financial rewards that these banks offer. If you are a fresher looking to build a stellar banking career, SFBs should be your first choice in 2026.`,
   },
 ]
 
 export const FAQS: FAQ[] = [
-  { q: "What is IPB Kochi?", a: "IPB (Institute of Professional Banking) Kochi is Kerala's leading banking career institute. We have placed 13,200+ students in 25+ partner banks through our specialized banking education programs." },
-  { q: "Which banks do IPB graduates get placed in?", a: "Our graduates work at SBI, HDFC Bank, Axis Bank, ICICI Bank, Canara Bank, Federal Bank, DCB Bank, Equitas SFB, Jana SFB, and 20+ other banks across India." },
-  { q: "What is the CBFS program?", a: "The Certificate in Banking & Financial Services (CBFS) is our flagship 6-month program covering KYC/AML compliance, digital banking, customer acquisition, loan processing, and investment products. It has the highest placement rate of any banking program in Kerala." },
-  { q: "Is the PO program for IBPS or SBI PO?", a: "Our PO Program covers both IBPS PO and SBI PO, as well as Bank of Baroda and Canara Bank PO exams. The curriculum is designed to help you clear any competitive banking exam." },
-  { q: "What is the fee structure?", a: "Our programs range from ₹15,000 (Equitas Ignite, 2 months) to ₹35,000 (CBFS, 6 months). EMI options are available. Contact us for scholarship eligibility." },
-  { q: "Do you offer placement guarantee?", a: "We offer 100% placement assistance — meaning every eligible student who completes the program gets placement support, interview preparation, and access to our bank partner network. We have placed over 13,200 students with this commitment." },
-  { q: "What is the minimum qualification?", a: "Most programs require a bachelor's degree with minimum 50% marks. The Equitas Ignite program accepts freshers with any graduation. Age eligibility varies by program." },
-  { q: "How long does placement take after course completion?", a: "Most students receive their first placement interview within 2-4 weeks of completion. The average time from course completion to first joining is 6-8 weeks." },
+  {
+    question: "What is the placement rate?",
+    answer:
+      "IPB Kochi provides 100% placement support for all enrolled students. We have successfully placed 13,200+ students to date in top banks across India. Our dedicated placement team works with each student individually to match them with the right opportunity.",
+  },
+  {
+    question: "Who are the bank partners?",
+    answer:
+      "We partner with 25+ banks including HDFC Bank, ICICI Bank, Axis Bank, Equitas Small Finance Bank, Utkarsh Small Finance Bank, DCB Bank, Federal Bank, South Indian Bank, and many more regional and national banking institutions.",
+  },
+  {
+    question: "What is the minimum qualification?",
+    answer:
+      "Any graduate from any stream can apply to IPB Kochi programs. Final year students who are awaiting their results are also eligible to apply and can join upon result declaration. No specific educational background is required.",
+  },
+  {
+    question: "Do you provide study materials?",
+    answer:
+      "Yes, comprehensive study materials are provided for all courses. This includes printed course modules, digital resources, practice question banks, and mock tests. Our materials are regularly updated to reflect current industry standards and banking practices.",
+  },
+  {
+    question: "Is there accommodation?",
+    answer:
+      "We help connect students with affordable PG accommodation near our campus in Kochi. Our student services team maintains a list of verified PG options for outstation students and can assist with the search process.",
+  },
+  {
+    question: "How to apply?",
+    answer:
+      "You can apply by filling out our online application form on this website, WhatsApp us at +91 7907215816, or call us directly. Our admissions team will guide you through the entire process including counseling, documentation, and enrollment.",
+  },
 ]
 
-export const SCHEMES: Scheme[] = [
-  {
-    title: "Early Bird Admission", tag: "LIMITED SEATS",
-    desc: "Book your seat in the next CBFS batch 30 days in advance and get ₹5,000 off the course fee plus priority placement listing with all 25+ partner banks.",
-    cta: "Claim Early Bird Offer",
-  },
-  {
-    title: "Sibling Discount", tag: "FAMILY OFFER",
-    desc: "Two siblings enrolling together get 15% off each. We believe banking careers run in families — help your sibling start their journey.",
-    cta: "Apply for Sibling Discount",
-  },
-  {
-    title: "Freshers Fast Track", tag: "FOR 2024-25 GRADUATES",
-    desc: "Fresh graduates from 2024-2025 batches get a dedicated placement cohort, intensive interview prep, and guaranteed 3 bank interview calls before the course ends.",
-    cta: "Enroll in Fast Track",
-  },
-]
+export const ABOUT = {
+  heading: "Kerala's Most Trusted Banking Training Institute",
+  description:
+    "Founded over 8 years ago, IPB Kochi has established itself as the gold standard in banking education in Kerala. We bridge the gap between academic learning and industry requirements, producing job-ready banking professionals who excel from day one.",
+  mission:
+    "To empower every graduate with the skills, knowledge, and confidence to build a successful banking career.",
+  vision:
+    "To be India's most trusted banking training institute, known for quality education and 100% placement outcomes.",
+  checkpoints: [
+    "Industry-expert faculty with 15+ years banking experience",
+    "Curriculum designed in partnership with leading banks",
+    "Dedicated placement cell with bank partnerships",
+    "State-of-the-art training infrastructure in Kochi",
+    "Ongoing alumni support and career advancement guidance",
+    "NSDC approved and ISO certified programs",
+  ],
+  image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&q=80&auto=format&fit=crop",
+}
+
+export const PLACEMENTS = {
+  heading: "13,200+ Students Placed in Top Banks",
+  subheading: "Our placement record speaks for itself",
+  description:
+    "Every student who completes a program at IPB Kochi receives dedicated placement support. Our relationships with 25+ banking partners ensure a steady stream of opportunities for our graduates.",
+  image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80&auto=format&fit=crop",
+  banks: [
+    "HDFC Bank",
+    "ICICI Bank",
+    "Axis Bank",
+    "Equitas SFB",
+    "Utkarsh SFB",
+    "DCB Bank",
+    "Federal Bank",
+    "South Indian Bank",
+    "Kotak Mahindra",
+    "Yes Bank",
+  ],
+}
+
+export const OFFER = {
+  badge: "Limited Time Offer",
+  heading: "Early Bird: 10% Off Course Fees",
+  description:
+    "Enroll before July 31, 2026 and save 10% on any course. Seats are limited — secure yours today.",
+  cta: "Claim Your Discount",
+}

@@ -1,39 +1,113 @@
 import Link from "next/link"
-import { WA_URL, PHONE, EMAIL, ADDRESS, PARENT_URL } from "@/lib/data"
+import { Phone, Mail, MapPin } from "lucide-react"
+import { SITE, NAV_LINKS, COURSES } from "@/lib/data"
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="bg-[#060D1A] border-t border-[#C9A84C]/10 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-[#0A1628] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand */}
           <div>
-            <p className="text-2xl font-bold mb-1"><span className="bg-[#C9A84C] text-[#003087] px-2 py-0.5">IPB</span></p>
-            <p className="text-[#A8B89A] text-sm mt-3 leading-relaxed">Kerala&apos;s #1 Banking Career Institute. 13,200+ placements. 25+ partner banks.</p>
-            <p className="text-[#A8B89A] text-xs mt-3">{ADDRESS}</p>
-            <a href={PARENT_URL} className="text-[#C9A84C] text-xs mt-2 inline-block hover:underline">A Versa Growth Ventures company</a>
+            <div className="flex items-center gap-1 mb-4">
+              <span className="font-poppins font-bold text-2xl text-white">IPB</span>
+              <span className="font-poppins font-bold text-2xl text-[#FF6B00]">Kochi</span>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              India&apos;s most trusted banking training institute. 13,200+ students placed in top banks across India.
+            </p>
+            <div className="flex items-center gap-2">
+              {["f", "in", "yt", "li"].map((s) => (
+                <a key={s} href="#" aria-label={s} className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-xs font-bold text-gray-400 hover:border-orange-500 hover:text-orange-400 transition-colors uppercase">
+                  {s}
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Quick Links */}
           <div>
-            <p className="text-[#C9A84C] text-xs tracking-widest uppercase mb-4">Programs</p>
-            {[["CBFS","/courses/cbfs"],["PO Program","/courses/po-program"],["HTD DCB","/courses/htd-dcb"],["Equitas Ignite","/courses/equitas-ignite"]].map(([n,h]) => (
-              <Link key={n} href={h} className="block text-[#A8B89A] text-sm mb-2 hover:text-[#C9A84C] transition-colors">{n}</Link>
-            ))}
+            <h3 className="font-poppins font-semibold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Courses */}
           <div>
-            <p className="text-[#C9A84C] text-xs tracking-widest uppercase mb-4">Quick Links</p>
-            {[["Placements","/placements"],["About","/about"],["Blog","/blog"],["FAQ","/faq"],["Schemes","/schemes"],["Contact","/contact"]].map(([n,h]) => (
-              <Link key={n} href={h} className="block text-[#A8B89A] text-sm mb-2 hover:text-[#C9A84C] transition-colors">{n}</Link>
-            ))}
+            <h3 className="font-poppins font-semibold text-white mb-4">Our Courses</h3>
+            <ul className="space-y-2">
+              {COURSES.map((course) => (
+                <li key={course.id}>
+                  <a
+                    href="/#courses"
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {course.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Contact */}
           <div>
-            <p className="text-[#C9A84C] text-xs tracking-widest uppercase mb-4">Contact</p>
-            <a href={`tel:${PHONE}`} className="block text-[#A8B89A] text-sm mb-2 hover:text-[#C9A84C]">{PHONE}</a>
-            <a href={`mailto:${EMAIL}`} className="block text-[#A8B89A] text-sm mb-2 hover:text-[#C9A84C]">{EMAIL}</a>
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block text-[#A8B89A] text-sm hover:text-[#C9A84C]">WhatsApp Admissions</a>
+            <h3 className="font-poppins font-semibold text-white mb-4">Contact Us</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2 text-gray-400 text-sm">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-[#FF6B00]" />
+                <span>{SITE.address}</span>
+              </li>
+              <li>
+                <a
+                  href={`tel:${SITE.phone}`}
+                  className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors"
+                >
+                  <Phone size={16} className="text-[#FF6B00] shrink-0" />
+                  {SITE.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors"
+                >
+                  <Mail size={16} className="text-[#FF6B00] shrink-0" />
+                  {SITE.email}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="border-t border-[#C9A84C]/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#A8B89A] text-xs">© {new Date().getFullYear()} IPB Kochi. All rights reserved.</p>
-          <p className="text-[#A8B89A] text-xs">Part of Versa Growth Ventures</p>
+
+        {/* Bottom bar */}
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-500 text-sm">
+            &copy; {currentYear} IPB Kochi. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-sm">
+            A{" "}
+            <a
+              href={`https://${SITE.parent}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#C9A84C] hover:text-white transition-colors"
+            >
+              Versa Growth Ventures
+            </a>{" "}
+            initiative
+          </p>
         </div>
       </div>
     </footer>

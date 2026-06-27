@@ -1,28 +1,10 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #0A1628;
-  --navy: #003087;
-  --orange: #FF6B00;
-  --gold: #C9A84C;
-  --text: #F0EDE6;
-  --muted: #A8B89A;
+body {
+  font-family: var(--font-inter), sans-serif;
+  color: #1A1A1A;
 }
 
-body { background: var(--bg); color: var(--text); }
-
-.glass-card {
-  background: rgba(0, 48, 135, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.12);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+html {
+  scroll-behavior: smooth;
 }
-.glass-card:hover { border-color: rgba(201, 168, 76, 0.25); box-shadow: 0 8px 32px rgba(0, 48, 135, 0.2); }
-
-.gradient-navy { background: linear-gradient(135deg, #003087, #001A5C); }
-.gradient-orange { background: linear-gradient(135deg, #FF6B00, #FF8533); }
-
-@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.animate-fade-slide-up { animation: fadeSlideUp 0.7s ease forwards; }
-
-@keyframes countUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }

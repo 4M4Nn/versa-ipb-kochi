@@ -1,21 +1,31 @@
+import { TRUST_BADGES } from "@/lib/data"
+import { Award, Shield, CheckCircle2 } from "lucide-react"
+
+const ICON_MAP: Record<string, React.ReactNode> = {
+  award: <Award size={28} className="text-[#FF6B00]" />,
+  shield: <Shield size={28} className="text-[#FF6B00]" />,
+  "check-circle": <CheckCircle2 size={28} className="text-[#FF6B00]" />,
+}
+
 export default function ProblemSection() {
   return (
-    <section className="py-20 bg-[#060D1A]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-[#FF6B00] text-xs tracking-[0.4em] uppercase mb-4">THE PROBLEM</p>
-          <h2 className="font-montserrat text-3xl md:text-4xl text-[#F0EDE6] font-bold mb-4">Kerala Graduates Want Bank Jobs.<br/>Most Don&apos;t Know How to Get Them.</h2>
+          <p className="text-[#FF6B00] text-xs font-semibold tracking-widest uppercase mb-3">Why Choose IPB</p>
+          <h2 className="font-poppins text-3xl md:text-4xl font-bold text-[#0A1628]">Trusted by 13,200+ Students</h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { icon: "📚", title: "Degree Not Enough", desc: "A graduation certificate doesn't qualify you for banking. Banks want KYC knowledge, digital banking skills, and compliance awareness that standard degrees never teach." },
-            { icon: "🔄", title: "No Clear Path", desc: "IBPS? SBI PO? Private banks? Most graduates spend months confused about which route to take — and many take the wrong one, wasting critical years." },
-            { icon: "🤝", title: "No Bank Connections", desc: "Even qualified candidates struggle to get interview calls without industry connections. IPB's 25+ bank partnerships eliminate this barrier." },
-          ].map(p => (
-            <div key={p.title} className="glass-card rounded-2xl p-8">
-              <div className="text-4xl mb-4">{p.icon}</div>
-              <h3 className="font-montserrat text-xl font-bold text-[#F0EDE6] mb-3">{p.title}</h3>
-              <p className="text-[#A8B89A] text-sm leading-relaxed">{p.desc}</p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {TRUST_BADGES.map((badge) => (
+            <div
+              key={badge.title}
+              className="flex flex-col items-center text-center p-8 rounded-2xl bg-[#F8F9FA] border border-gray-100 hover:border-[#FF6B00]/30 hover:shadow-md transition-all"
+            >
+              <div className="w-16 h-16 bg-[#FFF3EC] rounded-2xl flex items-center justify-center mb-5">
+                {ICON_MAP[badge.icon] ?? <Award size={28} className="text-[#FF6B00]" />}
+              </div>
+              <h3 className="font-poppins text-xl font-bold text-[#0A1628] mb-2">{badge.title}</h3>
+              <p className="text-[#6B7280] text-sm leading-relaxed">{badge.subtitle}</p>
             </div>
           ))}
         </div>

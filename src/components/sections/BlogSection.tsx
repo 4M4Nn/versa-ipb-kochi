@@ -1,23 +1,37 @@
 import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 import { BLOG_POSTS } from "@/lib/data"
+
 export default function BlogSection() {
   return (
-    <section className="py-20 bg-[#060D1A]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-end justify-between mb-10">
+    <section className="py-20 bg-[#F8F9FA]">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
-            <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">INSIGHTS</p>
-            <h2 className="font-montserrat text-3xl font-bold text-[#F0EDE6]">Banking Career Insights</h2>
+            <p className="text-[#FF6B00] text-xs font-semibold tracking-widest uppercase mb-3">Resources</p>
+            <h2 className="font-poppins text-3xl md:text-4xl font-bold text-[#0A1628]">Banking Insights</h2>
           </div>
-          <Link href="/blog" className="hidden md:block text-sm tracking-widest text-[#C9A84C] border border-[#C9A84C]/30 px-4 py-2 hover:bg-[#C9A84C]/10 transition-colors">VIEW ALL</Link>
+          <Link href="/blog" className="inline-flex items-center gap-1.5 text-[#FF6B00] font-semibold text-sm hover:gap-2.5 transition-all">
+            All Articles <ArrowRight size={16} />
+          </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {BLOG_POSTS.map(p => (
-            <Link key={p.slug} href={`/blog/${p.slug}`} className="group glass-card rounded-xl p-5 flex flex-col gap-3 hover:border-[#C9A84C]/30 transition-all border border-transparent">
-              <span className="text-xs px-2 py-1 rounded self-start" style={{ background:"#C9A84C20", color:"#C9A84C" }}>{p.tag}</span>
-              <h3 className="font-montserrat font-bold text-[#F0EDE6] group-hover:text-[#C9A84C] transition-colors leading-snug text-sm">{p.title}</h3>
-              <p className="text-[#A8B89A] text-xs leading-relaxed line-clamp-2">{p.excerpt}</p>
-              <span className="text-[#FF6B00] text-xs tracking-widest mt-auto">READ →</span>
+        <div className="grid md:grid-cols-3 gap-6">
+          {BLOG_POSTS.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:border-[#FF6B00]/20 transition-all"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6">
+                <span className="inline-block bg-[#FFF3EC] text-[#FF6B00] text-xs font-semibold px-3 py-1 rounded-full mb-3">{post.category}</span>
+                <h3 className="font-poppins text-base font-bold text-[#0A1628] leading-snug mb-2 group-hover:text-[#FF6B00] transition-colors">{post.title}</h3>
+                <p className="text-[#6B7280] text-sm line-clamp-2 mb-3">{post.excerpt}</p>
+                <p className="text-xs text-[#6B7280]">{post.date}</p>
+              </div>
             </Link>
           ))}
         </div>
