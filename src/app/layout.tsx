@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp"
 import MobileStickyBar from "@/components/ui/MobileStickyBar"
+import IntroWrapper from "@/components/ui/IntroWrapper"
 import { SITE } from "@/lib/data"
 
 const poppins = Poppins({ weight: ["400", "500", "600", "700"], subsets: ["latin"], variable: "--font-poppins", display: "swap" })
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="bg-white font-inter antialiased">
+        <IntroWrapper />
         <Navbar />
         <main className="pt-[94px] md:pt-[94px]">{children}</main>
         <Footer />
